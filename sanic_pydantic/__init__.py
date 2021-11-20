@@ -1,1 +1,1 @@
-from .decorators import RequestValidator  # noqa: F401
+from .request_validator import RequestValidator  # noqa: F401
