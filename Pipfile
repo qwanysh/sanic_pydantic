@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sanic = "*"
+pydantic = "*"
+
+[dev-packages]
+pytest = "*"
+flake8 = "<4"
+pytest-flake8 = "*"
+flake8-quotes = "*"
+flake8-commas = "*"
+
+[requires]
+python_version = "3.9"
