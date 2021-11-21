@@ -1,12 +1,12 @@
 import asyncio
 from functools import wraps
-from typing import Callable, Optional, List
+from typing import Callable, List, Optional
 
-from pydantic import ValidationError, MissingError, BaseModel
+from pydantic import BaseModel, MissingError, ValidationError
 from pydantic.error_wrappers import ErrorWrapper
 from sanic import response
 
-from .helpers import serialize_query, get_error_with_updated_location
+from .helpers import get_error_with_updated_location, serialize_query
 
 
 class RequestValidator:
