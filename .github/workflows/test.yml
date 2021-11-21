@@ -7,14 +7,18 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  test:
+    strategy:
+      matrix:
+        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
+    name: Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9.5
+        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         pip install --upgrade pip && pip install pipenv
