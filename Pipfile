@@ -13,6 +13,7 @@ flake8 = "<4"
 pytest-flake8 = "*"
 flake8-quotes = "*"
 flake8-commas = "*"
+flake8-isort = "*"
 
 [requires]
 python_version = "3.9"
