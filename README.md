@@ -1,4 +1,10 @@
-# sanic-pydantic
+# sanicpydantic
+Pydantic validation for Sanic framework
+
+#### Install:
+```bash
+pip install sanicpydantic
+```
 
 #### Example:
 ```python
