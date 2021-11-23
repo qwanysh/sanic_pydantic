@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 sanic = "*"
 pydantic = "*"
+mkdocs = "*"
+mkdocs-material = "*"
 
 [dev-packages]
 pytest = "*"
