@@ -4,7 +4,7 @@ with open('README.md', 'r', encoding='utf-8') as file:
     long_description = file.read()
 
 setup(
-    name='sanic_pydantic',
+    name='sanicpydantic',
     version='0.0.1',
     description='Pydantic validation for Sanic framework',
     url='https://github.com/qwanysh/sanic_pydantic',
