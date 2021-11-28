@@ -1,3 +1,5 @@
+from typing import List
+
 import pytest
 from pydantic import BaseModel
 from sanic import Sanic, response
@@ -16,7 +18,15 @@ def schema():
 
 
 @pytest.fixture
-def test_client(schema):
+def nested_schema(schema):
+    class NestedSchema(BaseModel):
+        params: List[schema]
+
+    return NestedSchema
+
+
+@pytest.fixture
+def test_client(schema, nested_schema):
     app = Sanic('app')
 
     @app.get('/query')
@@ -32,6 +42,11 @@ def test_client(schema):
     @app.post('/json')
     @validator(json_schema=schema)
     def endpoint_post(request, json_):
+        return response.json(json_.dict())
+
+    @app.post('/nested-json')
+    @validator(json_schema=nested_schema)
+    def endpoint_nested_post(request, json_):
         return response.json(json_.dict())
 
     return app.test_client

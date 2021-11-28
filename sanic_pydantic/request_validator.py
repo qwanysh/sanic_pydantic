@@ -6,7 +6,7 @@ from pydantic import BaseModel, MissingError, ValidationError
 from pydantic.error_wrappers import ErrorWrapper
 from sanic import response
 
-from .helpers import get_error_with_updated_location, serialize_query
+from .helpers import serialize_query, update_error_location
 
 
 class RequestValidator:
@@ -48,7 +48,7 @@ class RequestValidator:
                         )
                     except ValidationError as error:
                         raw_errors.extend(
-                            get_error_with_updated_location(
+                            update_error_location(
                                 error, 'query',
                             ).raw_errors,
                         )
@@ -61,7 +61,7 @@ class RequestValidator:
                             )
                         except ValidationError as error:
                             raw_errors.extend(
-                                get_error_with_updated_location(
+                                update_error_location(
                                     error, 'json',
                                 ).raw_errors,
                             )
@@ -85,7 +85,7 @@ class RequestValidator:
         error = ValidationError(raw_errors, BaseModel)
         return response.json(error.errors(), status=status)
 
-    async def _get_response(self, func: Callable, request, *args, **kwargs):
+    async def _get_response(self, func, request, *args, **kwargs):
         if asyncio.iscoroutinefunction(func):
             return await func(request, *args, **kwargs)
 
