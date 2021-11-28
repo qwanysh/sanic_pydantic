@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as file:
 
 setup(
     name='sanicpydantic',
-    version='0.0.1',
+    version='0.0.3',
     description='Pydantic validation for Sanic framework',
     url='https://github.com/qwanysh/sanic_pydantic',
     author='Kuanysh Beisembayev',
