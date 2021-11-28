@@ -38,3 +38,15 @@ def test_json(test_client):
     _, response = test_client.post('/json', data=dumps(data))
     assert response.status == 200
     assert response.json == data
+
+
+def test_nested_json_error(test_client):
+    data = {'params': [{}]}
+    _, response = test_client.post('/nested-json', data=dumps(data))
+    assert response.status == 422
+
+
+def test_nested_json(test_client):
+    data = {'params': [{'param': 1}]}
+    _, response = test_client.post('/nested-json', data=dumps(data))
+    assert response.status == 200
